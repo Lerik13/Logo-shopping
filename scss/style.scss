@@ -78,11 +78,12 @@ body {
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
 //@import "datepicker";
 //@import "lightgallery";
-//@import "pagging";
+@import "pagging";
 @import "popup";
 @import "header";
 @import "footer";
 @import "home";
+@import "catalog";
 //</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
 
 //<ОСНОВНОЙ БЛОК>====================================================================================================
@@ -170,6 +171,38 @@ body {
 	// .page__info-menu
 	&__info-menu {
 		margin: 0px 0px 38px 0px;
+	}
+}
+//========================================================================================================================================================
+.breadcrumbs {
+	overflow: auto;
+	margin: 0px 0px 20px 0px;
+	height: 20px;
+
+	// .breadcrumbs__lis
+	&__list {
+		display: flex;
+		align-items: center;
+		white-space: nowrap;
+		li {
+			padding: 0px 20px 0px 0px;
+			margin: 0px 10px 0px 0px;
+			background: url('../img/icons/li_arrow.png') right / 10px no-repeat;
+			&:last-child{
+				margin: 0;
+				background: none;
+			}
+		}
+	}
+	// .breadcrumbs__link
+	&__link {
+		color: #1ab9ce;
+		text-decoration: underline;
+	}
+	// .breadcrumbs__item
+	&__item {
+		color: #999999;
+		font-weight: 300;
 	}
 }
 //===========================================================================================================
@@ -606,6 +639,10 @@ body {
 		height: 57px;
 		margin: 0px auto 25px auto;
 		display: block;
+		// .hover-item-product__cart_catalog
+		&_catalog {
+			margin: 0;
+		}
 	}
 	// .hover-item-product__footer
 	&__footer {
@@ -650,6 +687,18 @@ body {
 			font-size: 18px;
 		}
 	}
+	// .hover-item-product__compare
+	&__compare {
+		background: url('../img/icons/compare.png') left no-repeat;
+		padding: 0px 0px 0px 33px;
+		line-height: 21px;
+		display: inline-block;
+		color: #fff;
+		span {
+			border-bottom: 1px dashed;
+		}
+	}
+	
 }
 .options-item-product {
 	// .options-item-product__item
