@@ -188,31 +188,36 @@ if (document.querySelector('.brands-slider')){
 	});	
 }
 
-const priceSlider = document.querySelector('.price-filter__slider');
-noUiSlider.create(priceSlider, {
-	connect: true,
-	start: [0, 200000],
-	tooltips: [wNumb({ decimals: 0 }), wNumb({ decimals: 0 })],
-	range: {
-		'min': [0],
-		'max': [200000]
-	}
-});
-const priceStart = document.getElementById('price-start');
-const priceEnd = document.getElementById('price-end');
-priceStart.addEventListener('change', function(){
-	priceSlider.noUiSlider.set([this.value, null]);
-});
-priceEnd.addEventListener('change', function(){
-	priceSlider.noUiSlider.set([null, this.value]);
-});
+//========================================================================================================================================================
+if (document.querySelector('.images-product')){
+	let imagesSubSlider = new Swiper('.images-product__subslider', {
+		observer: true,
+		observeParents: true,
+		slidesPerView: 4,
+		spaceBetween: 0,
+		//autoHeight: true,
+		speed: 800,
+		//touchRatio: 0,
+		//simulateTouch: false,
+		//loop: true,
+		//preloadImages: false,
+		//lazy: true,
+	});
+	let imagesMainSlider = new Swiper('.images-product__mainslider', {
+		observer: true,
+		observeParents: true,
+		slidesPerView: 1,
+		spaceBetween: 0,
+		//autoHeight: true,
+		speed: 800,
+		//touchRatio: 0,
+		//simulateTouch: false,
+		//loop: true,
+		//preloadImages: false,
+		//lazy: true,
+		thumbs: {
+			swiper: imagesSubSlider
+		},
+	});	
 
-priceSlider.noUiSlider.on('update', function (values, handle) {
-	var value = values[handle];
-
-	if (handle) {
-		priceEnd.value = Math.round(value);
-	} else {
-		priceStart.value = Math.round(value);
-	}
-});
+}

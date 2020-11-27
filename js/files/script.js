@@ -69,3 +69,35 @@ if (isMobile.any()) {
 		_slideToggle(filterTitle.nextElementSibling);
 	});
 }
+
+
+const priceSlider = document.querySelector('.price-filter__slider');
+if (priceSlider) {
+	noUiSlider.create(priceSlider, {
+		connect: true,
+		start: [0, 200000],
+		tooltips: [wNumb({ decimals: 0 }), wNumb({ decimals: 0 })],
+		range: {
+			'min': [0],
+			'max': [200000]
+		}
+	});
+	const priceStart = document.getElementById('price-start');
+	const priceEnd = document.getElementById('price-end');
+	priceStart.addEventListener('change', function(){
+		priceSlider.noUiSlider.set([this.value, null]);
+	});
+	priceEnd.addEventListener('change', function(){
+		priceSlider.noUiSlider.set([null, this.value]);
+	});
+
+	priceSlider.noUiSlider.on('update', function (values, handle) {
+		var value = values[handle];
+
+		if (handle) {
+			priceEnd.value = Math.round(value);
+		} else {
+			priceStart.value = Math.round(value);
+		}
+	});
+}
